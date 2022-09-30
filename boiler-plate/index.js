@@ -1,14 +1,12 @@
 const express = require('express')
 const app = express()
 const port = 5000
-const bodyParser = require('body-parser');
 const { User } = require("./models/User")
 
-//application/x-www.form-urlencoded
-app.use(bodyParser.urlencoded({extended: true}));
+const config = require('./config/key')
 
 //application/json
-app.use(bodyParser.json());
+app.use(express.urlencoded({extended: true}));
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://togking:123421ss@cluster0.11ui1bz.mongodb.net/?retryWrites=true&w=majority' ,{
@@ -17,7 +15,7 @@ mongoose.connect('mongodb+srv://togking:123421ss@cluster0.11ui1bz.mongodb.net/?r
 .catch(err => console.log(err))
 
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.get('/', (req, res) => res.send('Hello World! 안녕하세요'))
 
 app.post('/register', (req, res) => {
 
